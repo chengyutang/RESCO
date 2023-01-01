@@ -113,4 +113,15 @@ map_configs = {
         'end_time': 69000,
         'warmup': 0
     },
+    'grid3x3': {
+        'lights': [],
+        'net': 'environments/grid3x3/grid3x3.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 1999,
+        'warmup': 0
+    },
 }

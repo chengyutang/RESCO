@@ -4,12 +4,23 @@ import traci
 import sumolib
 import gym
 from resco_benchmark.traffic_signal import Signal
+from datetime import datetime
 
+
+class Listener(traci.StepListener):
+
+    def __init__(self, wt_dict):
+        self.waiting_time = wt_dict
+
+    def step(self, t=0):
+        for veh_id in traci.vehicle.getIDList():
+            self.waiting_time[veh_id] = traci.vehicle.getAccumulatedWaitingTime(veh_id)
 
 class MultiSignal(gym.Env):
     def __init__(self, run_name, map_name, net, state_fn, reward_fn, route=None, gui=False, end_time=3600,
                  step_length=10, yellow_length=4, step_ratio=1, max_distance=200, lights=(), log_dir='/', libsumo=False,
                  warmup=0, gymma=False):
+        self.start_time = datetime.now().strftime('%y%m%d_%H%M%S')
         self.libsumo = libsumo
         self.gymma = gymma  # gymma expects sequential list of states/rewards instead of dict
         print(map_name, net, state_fn.__name__, reward_fn.__name__)
@@ -62,17 +73,18 @@ class MultiSignal(gym.Env):
 
         # Pull signal observation shapes
         self.obs_shape = dict()
-        self.observation_space = list()
-        self.action_space = list()
+        self.observation_space = []
+        self.action_space = []
         for ts in self.all_ts_ids:
             self.signals[ts] = Signal(self.map_name, self.sumo, ts, self.yellow_length, self.phases[ts])
         for ts in self.all_ts_ids:
             self.signals[ts].signals = self.signals
             self.signals[ts].observe(self.step_length, self.max_distance)
         observations = self.state_fn(self.signals)
-        self.ts_order = list()
+        self.ts_order = []
         for ts in observations:
-            if ts == 'top_mgr' or ts == 'bot_mgr': continue     # Not a traffic signal
+            if ts == 'top_mgr' or ts == 'bot_mgr':
+                continue     # Not a traffic signal
             o_shape = observations[ts].shape
             self.obs_shape[ts] = o_shape
             o_shape = gym.spaces.Box(low=-np.inf, high=np.inf, shape=o_shape)
@@ -86,13 +98,16 @@ class MultiSignal(gym.Env):
         self.metrics = []
         self.wait_metric = dict()
 
-        if not self.libsumo: traci.switch(self.connection_name)
+        if not self.libsumo:
+            traci.switch(self.connection_name)
         traci.close()
-        self.connection_name = run_name + '-' + map_name + '-' + str(len(lights)) + '-' + state_fn.__name__ + '-' + reward_fn.__name__
+        self.connection_name = f"{run_name}-{map_name}-{len(lights)}-{state_fn.__name__}-{reward_fn.__name__}"
         if not os.path.exists(log_dir+self.connection_name):
             os.makedirs(log_dir+self.connection_name)
         self.sumo_cmd = None
         print('Connection ID', self.connection_name)
+
+        self.waiting_time = dict()
 
     def step_sim(self):
         # The monaco scenario expects .25s steps instead of 1s, account for that here.
@@ -101,7 +116,8 @@ class MultiSignal(gym.Env):
         
     def reset(self):
         if self.run != 0:
-            if not self.libsumo: traci.switch(self.connection_name)
+            if not self.libsumo:
+                traci.switch(self.connection_name)
             traci.close()
             self.save_metrics()
         self.metrics = []
@@ -119,8 +135,13 @@ class MultiSignal(gym.Env):
             self.sumo_cmd += ['-n', self.net, '-r', self.route + '_'+str(self.run)+'.rou.xml']
         else:
             self.sumo_cmd += ['-c', self.net]
-        self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
-                          os.path.join(self.log_dir, self.connection_name, 'tripinfo_' + str(self.run) + '.xml'),
+        # self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
+        #                   os.path.join(self.log_dir, self.connection_name, 'tripinfo_' + str(self.run) + '.xml'),
+        #                   '--tripinfo-output.write-unfinished',
+        #                   '--no-step-log', 'True',
+        #                   '--no-warnings', 'True']
+        self.sumo_cmd += ['--random', '--tripinfo-output',
+                          os.path.join(self.log_dir, f'self.connection_name_{self.start_time}', f'tripinfo_{self.run}.xml'),
                           '--tripinfo-output.write-unfinished',
                           '--no-step-log', 'True',
                           '--no-warnings', 'True']
@@ -131,11 +152,16 @@ class MultiSignal(gym.Env):
             traci.start(self.sumo_cmd, label=self.connection_name)
             self.sumo = traci.getConnection(self.connection_name)
 
+        self.waiting_time = dict()
+        listener = Listener(self.waiting_time)
+        self.sumo.addStepListener(listener)
+
         for _ in range(self.warmup):
             self.step_sim()
 
         # 'Start' only signals set for control, rest run fixed controllers
-        if self.run % 30 == 0 and self.ts_starter < len(self.all_ts_ids): self.ts_starter += 1
+        if self.run % 30 == 0 and self.ts_starter < len(self.all_ts_ids):
+            self.ts_starter += 1
         self.signal_ids = []
         for i in range(self.ts_starter):
             self.signal_ids.append(self.all_ts_ids[i])
@@ -149,7 +175,7 @@ class MultiSignal(gym.Env):
 
         if self.gymma:
             states = self.state_fn(self.signals)
-            rets = list()
+            rets = []
             for ts in self.ts_order:
                 rets.append(states[ts])
             return rets
@@ -184,7 +210,7 @@ class MultiSignal(gym.Env):
 
         done = self.sumo.simulation.getTime() >= self.end_time
         if self.gymma:
-            obss, rww = list(), list()
+            obss, rww = [], []
             for ts in self.ts_order:
                 obss.append(observations[ts])
                 rww.append(rewards[ts])
@@ -199,7 +225,8 @@ class MultiSignal(gym.Env):
             queue_length, max_queue = 0, 0
             for lane in signal.lanes:
                 queue = signal.full_observation[lane]['queue']
-                if queue > max_queue: max_queue = queue
+                if queue > max_queue:
+                    max_queue = queue
                 queue_length += queue
             queue_lengths[signal_id] = queue_length
             max_queues[signal_id] = max_queue

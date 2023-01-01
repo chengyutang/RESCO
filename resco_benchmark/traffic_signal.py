@@ -229,7 +229,8 @@ class Signal:
             full_observation['departures'] = departs
             # Clear departures from waiting times
             for vehicle in departs:
-                if vehicle in self.waiting_times: self.waiting_times.pop(vehicle)
+                if vehicle in self.waiting_times:
+                    self.waiting_times.pop(vehicle)
 
         self.last_step_vehicles = all_vehicles
         self.full_observation = full_observation
