@@ -1,5 +1,5 @@
 import numpy as np
-
+import os
 from resco_benchmark.agents.agent import Agent, IndependentAgent
 from resco_benchmark.config.signal_config import signal_configs
 
@@ -95,7 +95,7 @@ else:
             if done:
                 if info['eps'] % 100 == 0:
                     if self.saver is not None:
-                        self.saver.save(self.sess, self.config['log_dir']+'agent_' + 'checkpoint', global_step=info['eps'])
+                        self.saver.save(self.sess, os.path.join(self.config['log_dir'], 'agent_' + 'checkpoint', global_step=info['eps']))
 
 
     class MA2CAgent(Agent):

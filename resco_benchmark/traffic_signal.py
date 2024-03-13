@@ -11,13 +11,15 @@ def create_yellows(phases, yellow_length):
     for i in range(0, len(phases)):
         for j in range(0, len(phases)):
             if i != j:
+                state_i = phases[i].state
+                state_j = phases[j].state
                 need_yellow, yellow_str = False, ''
-                for sig_idx in range(len(phases[i].state)):
-                    if (phases[i].state[sig_idx] == 'G' or phases[i].state[sig_idx] == 'g') and (phases[j].state[sig_idx] == 'r' or phases[j].state[sig_idx] == 's'):
+                for a, b in zip(state_i, state_j):
+                    if (a == 'G' or a == 'g') and (b == 'r' or b == 's'):
                         need_yellow = True
                         yellow_str += 'y'
                     else:
-                        yellow_str += phases[i].state[sig_idx]
+                        yellow_str += a
                 if need_yellow:  # If a yellow is required
                     new_phases.append(traci.trafficlight.Phase(yellow_length, yellow_str))
                     yellow_dict[str(i) + '_' + str(j)] = len(new_phases) - 1  # The index of the yellow phase in SUMO
