@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="grid_5.net.xml"/>
+        <route-files value="grid_5_normal.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="4000" />
+    </processing>
+</configuration>

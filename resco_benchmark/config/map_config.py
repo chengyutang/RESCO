@@ -124,4 +124,81 @@ map_configs = {
         'end_time': 1999,
         'warmup': 0
     },
+    'grid3x3_normal': {
+        'lights': [],
+        'net': 'environments/grid3x3/grid3x3_normal.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
+        'warmup': 0
+    },
+    'grid3x3_waves': {
+        'lights': [],
+        'net': 'environments/grid3x3/9x3_train_waves_3600.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
+        'warmup': 0
+    },
+    'grid_5': {
+        'lights': [],
+        'net': 'environments/grid_5/grid_5.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 1999,
+        'warmup': 0
+    },
+    'grid_5_normal': {
+        'lights': [],
+        'net': 'environments/grid_5/grid_5_normal.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
+        'warmup': 0
+    },
+    'grid_5_heavy': {
+        'lights': [],
+        'net': 'environments/grid_5/grid_5_heavy.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
+        'warmup': 0
+    },
+    'grid_5_waves': {
+        'lights': [],
+        'net': 'environments/grid_5/5x3_train_waves_3600.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
+        'warmup': 0
+    },
+    'grid18x3': {
+        'lights': [],
+        'net': 'environments/grid18x3/grid18x3.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3999,
+        'warmup': 0
+    },
 }

@@ -147,6 +147,29 @@ mdp_configs = {
                 'top_left_mgr': ['top_right_mgr', 'bot_left_mgr']
             }
         },
+        'grid_5_waves': {
+            'coef': 0.4,
+            'coop_gamma': 0.9,
+            'clip_wave': 4.0,
+            'clip_wait': 4.0,
+            'norm_wave': 5.0,
+            'norm_wait': 100.0,
+            'alpha': 0.75,
+            'management': {
+                'J0_mgr': ['J0'],
+                'J1_mgr': ['J1'],
+                'J2_mgr': ['J2'],
+                'J3_mgr': ['J3'],
+                'J4_mgr': ['J4'],
+            },
+            'management_neighbors': {
+                'J0_mgr': ['J1_mgr', 'J2_mgr', 'J3_mgr', 'J4_mgr'],
+                'J1_mgr': ['J0_mgr'],
+                'J2_mgr': ['J0_mgr'],
+                'J3_mgr': ['J0_mgr'],
+                'J4_mgr': ['J0_mgr'],
+            }
+        },
         'ingolstadt1': {
             'coef': 0.4,
             'coop_gamma': 0.9,

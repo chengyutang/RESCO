@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="5x3lane.net.xml"/>
+        <route-files value="5x3_train_waves_3600.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="4000" />
+    </processing>
+</configuration>
