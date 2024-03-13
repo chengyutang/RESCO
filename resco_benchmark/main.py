@@ -1,4 +1,3 @@
-import pathlib
 import os
 import multiprocessing as mp
 
@@ -18,18 +17,20 @@ def main():
     ap.add_argument("--eps", type=int, default=100)
     ap.add_argument("--procs", type=int, default=1)
     ap.add_argument("--map", type=str, default='ingolstadt1',
-                    choices=['grid4x4', 'arterial4x4', 'ingolstadt1', 'ingolstadt7', 'ingolstadt21',
-                             'cologne1', 'cologne3', 'cologne8', 'grid3x3'
-                             ])
+                    choices=[
+                        'grid4x4', 'arterial4x4', 'ingolstadt1', 'ingolstadt7', 'ingolstadt21', 'cologne1', 'cologne3',
+                        'cologne8', 'grid3x3', 'grid_5', 'grid_5_normal', 'grid_5_heavy', 'grid_5_waves', 'grid18x3',
+                        'grid3x3_normal', 'grid3x3_waves'
+                    ])
     ap.add_argument("--pwd", type=str, default=os.path.dirname(__file__))
-    ap.add_argument("--log_dir", type=str, default=os.path.join(os.path.dirname(os.getcwd()), 'results' + os.sep))
+    ap.add_argument("--log-dir", type=str, default=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'results'))
     ap.add_argument("--gui", type=bool, default=False)
     ap.add_argument("--libsumo", type=bool, default=False)
     ap.add_argument("--tr", type=int, default=0)  # Can't multi-thread with libsumo, provide a trial number
     ap.add_argument("--save_freq", type=int, default=100)
     ap.add_argument("--load", type=bool, default=False)
     args = ap.parse_args()
-
+    print(args.log_dir)
     if args.libsumo and 'LIBSUMO_AS_TRACI' not in os.environ:
         raise EnvironmentError("Set LIBSUMO_AS_TRACI to nonempty value to enable libsumo")
 
