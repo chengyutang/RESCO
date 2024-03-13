@@ -33,8 +33,8 @@ class IndependentAgent(Agent):
         for agent_id in observation.keys():
             self.agents[agent_id].observe(observation[agent_id], reward[agent_id], done, info)
             if done:
-                if info['eps'] % 100 == 0:
-                    self.agents[agent_id].save(os.path.join(self.config['log_dir'], f'agent_{agent_id}'))
+                if info['eps'] % self.config['save_freq'] == 0:
+                    self.agents[agent_id].save(self.config['log_dir']+'agent_'+agent_id)
 
 
 class SharedAgent(Agent):
@@ -61,7 +61,9 @@ class SharedAgent(Agent):
             batch_reverse = [self.reverse_valid.get(agent_id) for agent_id in
                           observation.keys()]
 
-        batch_acts = self.agent.act(batch_obs, valid_acts=batch_valid, reverse_valid=batch_reverse)
+        batch_acts = self.agent.act(batch_obs,
+                                valid_acts=batch_valid,
+                                reverse_valid=batch_reverse)
         acts = dict()
         for i, agent_id in enumerate(observation.keys()):
             acts[agent_id] = batch_acts[i]
@@ -74,5 +76,5 @@ class SharedAgent(Agent):
         batch_reset = [False]*len(batch_obs)
         self.agent.observe(batch_obs, batch_rew, batch_done, batch_reset)
         if done:
-            if info['eps'] % 100 == 0:
-                self.agent.save(os.path.join(self.config['log_dir'], 'agent'))
+            if info['eps'] % self.config['save_freq'] == 0:
+                self.agent.save(self.config['log_dir']+'agent')
