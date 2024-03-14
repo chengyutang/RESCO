@@ -24,7 +24,10 @@ from resco_benchmark import rewards
 pwd = dirname(__file__)
 log_dir = os.getcwd()
 
-maps = ['grid4x4', 'arterial4x4', 'cologne1', 'cologne3', 'cologne8', 'ingolstadt1', 'ingolstadt7', 'ingolstadt21']
+maps = [
+    'grid4x4', 'arterial4x4', 'ingolstadt1', 'ingolstadt7', 'ingolstadt21', 'cologne1', 'cologne3', 'cologne8',
+    'grid3x3', 'grid_5', 'grid_5_normal', 'grid_5_heavy', 'grid_5_waves', 'grid18x3', 'grid3x3_normal', 'grid3x3_waves'
+]
 algs = ['ia2c', 'ippo', 'maa2c', 'mappo', 'coma', 'iql', 'maddpg', 'qmix', 'vdn', 'ia2c_ns', 'ippo_ns', 'maa2c_ns', 'mappo_ns', 'coma_ns', 'iql_ns', 'maddpg_ns', 'qmix_ns', 'vdn_ns']
 for alg in algs:
     for map in maps:

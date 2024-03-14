@@ -1,6 +1,7 @@
 import os
 import multiprocessing as mp
-
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from multi_signal import MultiSignal
 import argparse
 from resco_benchmark.config.agent_config import agent_configs
@@ -23,7 +24,7 @@ def main():
                         'grid3x3_normal', 'grid3x3_waves'
                     ])
     ap.add_argument("--pwd", type=str, default=os.path.dirname(__file__))
-    ap.add_argument("--log-dir", type=str, default=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'results'))
+    ap.add_argument("--log-dir", type=str, default=os.path.join(os.path.dirname(__file__), 'results'))
     ap.add_argument("--gui", type=bool, default=False)
     ap.add_argument("--libsumo", type=bool, default=False)
     ap.add_argument("--tr", type=int, default=0)  # Can't multi-thread with libsumo, provide a trial number

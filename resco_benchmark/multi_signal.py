@@ -16,6 +16,7 @@ class Listener(traci.StepListener):
         for veh_id in traci.vehicle.getIDList():
             self.waiting_time[veh_id] = traci.vehicle.getAccumulatedWaitingTime(veh_id)
 
+
 class MultiSignal(gym.Env):
     def __init__(self, run_name, map_name, net, state_fn, reward_fn, route=None, gui=False, end_time=3600,
                  step_length=10, yellow_length=4, step_ratio=1, max_distance=200, lights=(), log_dir='.', libsumo=False,
@@ -49,7 +50,7 @@ class MultiSignal(gym.Env):
             traci.start(sumo_cmd)
             self.sumo = traci
         else:
-            traci.start(sumo_cmd, label = self.connection_name)
+            traci.start(sumo_cmd, label=self.connection_name)
             self.sumo = traci.getConnection(self.connection_name)
         self.signal_ids = self.sumo.trafficlight.getIDList()
         print("lights", len(self.signal_ids), self.signal_ids)
@@ -63,7 +64,6 @@ class MultiSignal(gym.Env):
             ]
             for lightID in self.signal_ids
         }
-
 
         self.signals = dict()
 
@@ -138,12 +138,7 @@ class MultiSignal(gym.Env):
             self.sumo_cmd += ['-n', self.net, '-r', self.route + '_'+str(self.run)+'.rou.xml']
         else:
             self.sumo_cmd += ['-c', self.net]
-        # self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
-        #                   os.path.join(self.log_dir, self.connection_name, 'tripinfo_' + str(self.run) + '.xml'),
-        #                   '--tripinfo-output.write-unfinished',
-        #                   '--no-step-log', 'True',
-        #                   '--no-warnings', 'True']
-        self.sumo_cmd += ['--random', '--tripinfo-output',
+        self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
                           os.path.join(self.log_dir, self.connection_name, f'tripinfo_{self.run}.xml'),
                           '--tripinfo-output.write-unfinished',
                           '--no-step-log', 'True',
