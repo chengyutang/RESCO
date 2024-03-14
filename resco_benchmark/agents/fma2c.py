@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 from resco_benchmark.config.signal_config import signal_configs
 from resco_benchmark.agents.agent import Agent
@@ -154,5 +155,5 @@ else:
                 if done:
                     if info['eps'] % 100 == 0:
                         if self.saver is not None:
-                            self.saver.save(self.sess, self.config['log_dir'] + 'agent_' + 'checkpoint',
+                            self.saver.save(os.path.join(self.sess, self.config['log_dir'], 'agent_checkpoint'),
                                             global_step=info['eps'])

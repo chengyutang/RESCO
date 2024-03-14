@@ -28,7 +28,7 @@ def main():
     ap.add_argument("--gui", type=bool, default=False)
     ap.add_argument("--libsumo", type=bool, default=False)
     ap.add_argument("--tr", type=int, default=0)  # Can't multi-thread with libsumo, provide a trial number
-    ap.add_argument("--save_freq", type=int, default=100)
+    ap.add_argument("--save-freq", type=int, default=100)
     ap.add_argument("--load", type=bool, default=False)
     args = ap.parse_args()
     print(args.log_dir)

@@ -95,7 +95,7 @@ else:
             if done:
                 if info['eps'] % 100 == 0:
                     if self.saver is not None:
-                        self.saver.save(self.sess, os.path.join(self.config['log_dir'], 'agent_' + 'checkpoint', global_step=info['eps']))
+                        self.saver.save(self.sess, os.path.join(self.config['log_dir'], 'agent_checkpoint', global_step=info['eps']))
 
 
     class MA2CAgent(Agent):

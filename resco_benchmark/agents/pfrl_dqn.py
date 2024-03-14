@@ -1,5 +1,6 @@
 from typing import Any, Sequence
 import numpy as np
+import os
 
 import torch
 import torch.nn as nn
@@ -42,7 +43,7 @@ class IDQN(IndependentAgent):
             self.agents[key] = DQNAgent(config, act_space, model)
             if self.config['load']:
                 print('LOADING SAVED MODEL FOR EVALUATION')
-                self.agents[key].load(self.config['log_dir']+'agent_'+key+'.pt')
+                self.agents[key].load(os.path.join(self.config['log_dir'], f'agent_{key}.pt'))
                 self.agents[key].agent.training = False
 
 
