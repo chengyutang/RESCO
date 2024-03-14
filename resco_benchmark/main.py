@@ -31,7 +31,7 @@ def main():
     ap.add_argument("--save-freq", type=int, default=100)
     ap.add_argument("--load", type=bool, default=False)
     args = ap.parse_args()
-    print(args.log_dir)
+
     if args.libsumo and 'LIBSUMO_AS_TRACI' not in os.environ:
         raise EnvironmentError("Set LIBSUMO_AS_TRACI to nonempty value to enable libsumo")
 

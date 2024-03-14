@@ -103,7 +103,7 @@ class MultiSignal(gym.Env):
         if not self.libsumo:
             traci.switch(self.connection_name)
         traci.close()
-        self.connection_name = f"{run_name}-{map_name}-{len(lights)}-{state_fn.__name__}-{reward_fn.__name__}_{start_time}"
+        self.connection_name = f"{run_name}-{map_name}-{len(lights)}-{state_fn.__name__}-{reward_fn.__name__}"
         # if not os.path.exists(log_dir+self.connection_name):
         #     os.makedirs(log_dir+self.connection_name)
         os.makedirs(os.path.join(log_dir, self.connection_name), exist_ok=True)
