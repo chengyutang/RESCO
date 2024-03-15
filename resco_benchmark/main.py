@@ -30,6 +30,7 @@ def main():
     ap.add_argument("--tr", type=int, default=0)  # Can't multi-thread with libsumo, provide a trial number
     ap.add_argument("--save-freq", type=int, default=100)
     ap.add_argument("--load", type=bool, default=False)
+    ap.add_argument("--log-emissions", type=bool, default=False)
     args = ap.parse_args()
 
     if args.libsumo and 'LIBSUMO_AS_TRACI' not in os.environ:
@@ -89,7 +90,8 @@ def run_trial(args, trial):
                       route=route, step_length=map_config['step_length'], yellow_length=map_config['yellow_length'],
                       step_ratio=map_config['step_ratio'], end_time=map_config['end_time'],
                       max_distance=agt_config['max_distance'], lights=map_config['lights'], gui=args.gui,
-                      log_dir=args.log_dir, libsumo=args.libsumo, warmup=map_config['warmup'])
+                      log_dir=args.log_dir, libsumo=args.libsumo, warmup=map_config['warmup'],
+                      log_emissions=args.log_emissions)
 
     agt_config['episodes'] = int(args.eps * 0.8)    # schedulers decay over 80% of steps
     agt_config['steps'] = agt_config['episodes'] * num_steps_eps

@@ -4,7 +4,7 @@ import traci
 import sumolib
 import gym
 from resco_benchmark.traffic_signal import Signal
-from datetime import datetime
+# from datetime import datetime
 
 
 class Listener(traci.StepListener):
@@ -20,8 +20,8 @@ class Listener(traci.StepListener):
 class MultiSignal(gym.Env):
     def __init__(self, run_name, map_name, net, state_fn, reward_fn, route=None, gui=False, end_time=3600,
                  step_length=10, yellow_length=4, step_ratio=1, max_distance=200, lights=(), log_dir='.', libsumo=False,
-                 warmup=0, gymma=False):
-        start_time = datetime.now().strftime('%y%m%d_%H%M%S')
+                 warmup=0, gymma=False, log_emissions=False):
+        # start_time = datetime.now().strftime('%y%m%d_%H%M%S')
         self.libsumo = libsumo
         self.gymma = gymma  # gymma expects sequential list of states/rewards instead of dict
         print(map_name, net, state_fn.__name__, reward_fn.__name__)
@@ -33,6 +33,7 @@ class MultiSignal(gym.Env):
         self.reward_fn = reward_fn
         self.max_distance = max_distance
         self.warmup = warmup
+        self.log_emissions = log_emissions
 
         self.end_time = end_time
         self.step_length = step_length
@@ -143,6 +144,8 @@ class MultiSignal(gym.Env):
                           '--tripinfo-output.write-unfinished',
                           '--no-step-log', 'True',
                           '--no-warnings', 'True']
+        if self.log_emissions:
+            self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, self.connection_name, f"emission_{self.run}.xml")]
         if self.libsumo:
             traci.start(self.sumo_cmd)
             self.sumo = traci

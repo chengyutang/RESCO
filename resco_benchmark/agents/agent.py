@@ -18,7 +18,7 @@ class Agent(object):
 
 
 class IndependentAgent(Agent):
-    def __init__(self, config, obs_act, map_name, thread_number):
+    def __init__(self, config):
         super().__init__()
         self.config = config
         self.agents = dict()
@@ -38,7 +38,7 @@ class IndependentAgent(Agent):
 
 
 class SharedAgent(Agent):
-    def __init__(self, config, obs_act, map_name, thread_number):
+    def __init__(self, config):
         super().__init__()
         self.config = config
         self.agent = None
@@ -56,14 +56,10 @@ class SharedAgent(Agent):
             batch_valid = None
             batch_reverse = None
         else:
-            batch_valid = [self.valid_acts.get(agent_id) for agent_id in
-                           observation.keys()]
-            batch_reverse = [self.reverse_valid.get(agent_id) for agent_id in
-                          observation.keys()]
+            batch_valid = [self.valid_acts.get(agent_id) for agent_id in observation.keys()]
+            batch_reverse = [self.reverse_valid.get(agent_id) for agent_id in observation.keys()]
 
-        batch_acts = self.agent.act(batch_obs,
-                                valid_acts=batch_valid,
-                                reverse_valid=batch_reverse)
+        batch_acts = self.agent.act(batch_obs, valid_acts=batch_valid, reverse_valid=batch_reverse)
         acts = dict()
         for i, agent_id in enumerate(observation.keys()):
             acts[agent_id] = batch_acts[i]

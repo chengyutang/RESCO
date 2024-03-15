@@ -146,7 +146,7 @@ class SharedDQN(DQN):
         if self.training:
             batch_action = []
             for i in range(len(batch_obs)):
-                av = batch_av[i : i + 1]
+                av = batch_av[i: i + 1]
                 greed = batch_argmax[i]
                 act, greedy = self.explorer.select_action(self.t, lambda: greed, action_value=av, num_acts=len(valid_acts[i]))
                 if not greedy:
