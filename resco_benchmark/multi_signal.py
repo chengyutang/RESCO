@@ -107,7 +107,7 @@ class MultiSignal(gym.Env):
         self.connection_name = f"{run_name}-{map_name}-{len(lights)}-{state_fn.__name__}-{reward_fn.__name__}"
         # if not os.path.exists(log_dir+self.connection_name):
         #     os.makedirs(log_dir+self.connection_name)
-        os.makedirs(os.path.join(log_dir, self.connection_name), exist_ok=True)
+        os.makedirs(os.path.join(self.log_dir, self.connection_name), exist_ok=True)
         self.sumo_cmd = None
         print('Connection ID:', self.connection_name)
 
