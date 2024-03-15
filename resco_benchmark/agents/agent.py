@@ -18,7 +18,7 @@ class Agent(object):
 
 
 class IndependentAgent(Agent):
-    def __init__(self, config):
+    def __init__(self, config, obs_act, map_name, thread_number):
         super().__init__()
         self.config = config
         self.agents = dict()
@@ -38,7 +38,7 @@ class IndependentAgent(Agent):
 
 
 class SharedAgent(Agent):
-    def __init__(self, config):
+    def __init__(self, config, obs_act, map_name, thread_number):
         super().__init__()
         self.config = config
         self.agent = None
