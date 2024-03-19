@@ -34,7 +34,7 @@ class IndependentAgent(Agent):
             self.agents[agent_id].observe(observation[agent_id], reward[agent_id], done, info)
             if done:
                 if info['eps'] % self.config['save_freq'] == 0:
-                    self.agents[agent_id].save(os.path.join(self.config['log_dir'], 'agent_'+agent_id))
+                    self.agents[agent_id].save(os.path.join(self.config['log_dir'], 'agent_' + agent_id))
 
 
 class SharedAgent(Agent):

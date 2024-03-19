@@ -37,7 +37,8 @@ class MPLight(SharedAgent):
         self.agent = DQNAgent(config, num_actions, model, num_agents=config['num_lights'])
         if self.config['load']:
             print('LOADING SAVED MODEL FOR EVALUATION')
-            self.agent.load(os.path.join(self.config['log_dir'], 'agent.pt'))
+            # self.agent.load(os.path.join(self.config['log_dir'], 'agent.pt'))
+            self.agent.load(os.path.join(self.config['load'], 'agent.pt'))
             self.agent.agent.training = False
 
 

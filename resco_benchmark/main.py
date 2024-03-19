@@ -1,6 +1,7 @@
 import os
 import multiprocessing as mp
 import sys
+import json
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from multi_signal import MultiSignal
 import argparse
@@ -29,9 +30,14 @@ def main():
     ap.add_argument("--libsumo", type=bool, default=False)
     ap.add_argument("--tr", type=int, default=0)  # Can't multi-thread with libsumo, provide a trial number
     ap.add_argument("--save-freq", type=int, default=100)
-    ap.add_argument("--load", type=bool, default=False)
+    ap.add_argument("--load", type=str, help="The folder where the agents are stored")
     ap.add_argument("--log-emissions", type=bool, default=False)
     args = ap.parse_args()
+
+    os.makedirs(args.log_dir, exist_ok=True)
+
+    with open(os.path.join(args.log_dir, "args.json"), "w") as f:
+        json.dump(vars(args), f, indent=4)
 
     if args.libsumo and 'LIBSUMO_AS_TRACI' not in os.environ:
         raise EnvironmentError("Set LIBSUMO_AS_TRACI to nonempty value to enable libsumo")
@@ -95,7 +101,8 @@ def run_trial(args, trial):
 
     agt_config['episodes'] = int(args.eps * 0.8)    # schedulers decay over 80% of steps
     agt_config['steps'] = agt_config['episodes'] * num_steps_eps
-    agt_config['log_dir'] = os.path.join(args.log_dir, env.connection_name)
+    # agt_config['log_dir'] = os.path.join(args.log_dir, env.connection_name)
+    agt_config['log_dir'] = args.log_dir
     agt_config['num_lights'] = len(env.all_ts_ids)
 
     # Get agent id's, observation shapes, and action sizes from env

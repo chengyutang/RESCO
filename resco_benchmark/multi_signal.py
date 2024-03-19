@@ -105,9 +105,7 @@ class MultiSignal(gym.Env):
             traci.switch(self.connection_name)
         traci.close()
         self.connection_name = f"{run_name}-{map_name}-{len(lights)}-{state_fn.__name__}-{reward_fn.__name__}"
-        # if not os.path.exists(log_dir+self.connection_name):
-        #     os.makedirs(log_dir+self.connection_name)
-        os.makedirs(os.path.join(self.log_dir, self.connection_name), exist_ok=True)
+        # os.makedirs(os.path.join(self.log_dir, self.connection_name), exist_ok=True)
         self.sumo_cmd = None
         print('Connection ID:', self.connection_name)
 
@@ -139,13 +137,19 @@ class MultiSignal(gym.Env):
             self.sumo_cmd += ['-n', self.net, '-r', self.route + '_'+str(self.run)+'.rou.xml']
         else:
             self.sumo_cmd += ['-c', self.net]
+        # self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
+        #                   os.path.join(self.log_dir, self.connection_name, f'tripinfo_{self.run}.xml'),
+        #                   '--tripinfo-output.write-unfinished',
+        #                   '--no-step-log', 'True',
+        #                   '--no-warnings', 'True']
         self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
-                          os.path.join(self.log_dir, self.connection_name, f'tripinfo_{self.run}.xml'),
+                          os.path.join(self.log_dir, f'tripinfo_{self.run}.xml'),
                           '--tripinfo-output.write-unfinished',
                           '--no-step-log', 'True',
                           '--no-warnings', 'True']
         if self.log_emissions:
-            self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, self.connection_name, f"emission_{self.run}.xml")]
+            # self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, self.connection_name, f"emission_{self.run}.xml")]
+            self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, f"emission_{self.run}.xml")]
         if self.libsumo:
             traci.start(self.sumo_cmd)
             self.sumo = traci
@@ -239,7 +243,8 @@ class MultiSignal(gym.Env):
         })
 
     def save_metrics(self):
-        log = os.path.join(self.log_dir, self.connection_name, 'metrics_' + str(self.run) + '.csv')
+        # log = os.path.join(self.log_dir, self.connection_name, 'metrics_' + str(self.run) + '.csv')
+        log = os.path.join(self.log_dir, 'metrics_' + str(self.run) + '.csv')
         print('saving', log)
         with open(log, 'w+') as output_file:
             for line in self.metrics:
