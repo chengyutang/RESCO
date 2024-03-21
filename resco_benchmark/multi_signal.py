@@ -137,18 +137,12 @@ class MultiSignal(gym.Env):
             self.sumo_cmd += ['-n', self.net, '-r', self.route + '_'+str(self.run)+'.rou.xml']
         else:
             self.sumo_cmd += ['-c', self.net]
-        # self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
-        #                   os.path.join(self.log_dir, self.connection_name, f'tripinfo_{self.run}.xml'),
-        #                   '--tripinfo-output.write-unfinished',
-        #                   '--no-step-log', 'True',
-        #                   '--no-warnings', 'True']
         self.sumo_cmd += ['--random', '--time-to-teleport', '-1', '--tripinfo-output',
                           os.path.join(self.log_dir, f'tripinfo_{self.run}.xml'),
                           '--tripinfo-output.write-unfinished',
                           '--no-step-log', 'True',
                           '--no-warnings', 'True']
         if self.log_emissions:
-            # self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, self.connection_name, f"emission_{self.run}.xml")]
             self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, f"emission_{self.run}.xml")]
         if self.libsumo:
             traci.start(self.sumo_cmd)

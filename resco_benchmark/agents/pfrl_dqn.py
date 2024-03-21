@@ -124,7 +124,8 @@ class SharedDQN(DQN):
         self.batch_observe(obs, reward, done, reset)
 
     def batch_act(self, batch_obs: Sequence[Any], valid_acts=None, reverse_valid=None) -> Sequence[Any]:
-        if valid_acts is None: return super(SharedDQN, self).batch_act(batch_obs)
+        if valid_acts is None:
+            return super(SharedDQN, self).batch_act(batch_obs)
         with torch.no_grad(), evaluating(self.model):
             batch_av = self._evaluate_model_and_update_recurrent_states(batch_obs)
 

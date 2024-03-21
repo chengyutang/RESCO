@@ -27,19 +27,16 @@ def create_yellows(phases, yellow_length):
 
 
 class Signal:
-    def __init__(self, map_name, sumo, id, yellow_length, phases):
+    def __init__(self, map_name, sumo, signal_id, yellow_length, phases):
         self.sumo = sumo
-        self.id = id
+        self.id = signal_id
         self.yellow_time = yellow_length
         self.next_phase = 0
 
-        links = self.sumo.trafficlight.getControlledLinks(self.id)
-        lanes = []
-
-        #for i, link in enumerate(links):
-        #    link = link[0]  # unpack so link[0] is inbound, link[1] outbound
-        #    if link[0] not in lanes: lanes.append(link[0])
-        #print(self.id, lanes)
+        # for i, link in enumerate(links):
+        #     link = link[0]  # unpack so link[0] is inbound, link[1] outbound
+        #     if link[0] not in lanes: lanes.append(link[0])
+        # print(self.id, lanes)
 
         # Unique lanes
         self.lanes = []
@@ -67,7 +64,8 @@ class Signal:
                             dir_lanes.append(lane)
                     else:
                         self.inbounds_fr_direction[inbound_fr_direction] = [lane]
-                    if lane not in self.lanes: self.lanes.append(lane)
+                    if lane not in self.lanes:
+                        self.lanes.append(lane)
 
             # Populate outbound lane information
             self.out_lane_to_signalid = dict()
@@ -78,9 +76,11 @@ class Signal:
                     for key in dwn_lane_sets:   # Find all inbound lanes from upstream
                         if key.split('-')[0] == direction:    # Downstream direction matches
                             dwn_lane_set = dwn_lane_sets[key]
-                            if dwn_lane_set is None: raise Exception('Invalid signal config')
+                            if dwn_lane_set is None:
+                                raise Exception('Invalid signal config')
                             for lane in dwn_lane_set:
-                                if lane not in self.outbound_lanes: self.outbound_lanes.append(lane)
+                                if lane not in self.outbound_lanes:
+                                    self.outbound_lanes.append(lane)
                                 self.out_lane_to_signalid[lane] = dwn_signal
                                 for selfkey in self.lane_sets:
                                     if selfkey.split('-')[1] == key.split('-')[0]:    # Out dir. matches dwnstrm in dir.
@@ -117,15 +117,16 @@ class Signal:
         self.downstream = {'N': None, 'E': None, 'S': None, 'W': None}
 
         links = self.sumo.trafficlight.getControlledLinks(self.id)
-        #print(self.id, links)
+        # print(self.id, links)
         for i, link in enumerate(links):
             link = link[0]  # unpack so link[0] is inbound, link[1] outbound
-            if link[0] not in self.lanes: self.lanes.append(link[0])
+            if link[0] not in self.lanes:
+                self.lanes.append(link[0])
             # Group of lanes constituting a direction of traffic
             if i % 3 == 0:
                 index = int(i/3)
                 self.lane_sets[index_to_movement[index]].append(link[0])
-        #print(self.id, self.lane_sets)
+        # print(self.id, self.lane_sets)
         """split = self.lane_sets['S-W'][0].split('_')[0]
         if 'np' not in split: self.downstream['N'] = split
         split = self.lane_sets['W-N'][0].split('_')[0]
@@ -138,29 +139,37 @@ class Signal:
         fr_sig = re.findall('[a-zA-Z]+[0-9]+', lane)[0]
         fringes, isfringe = ['top', 'right', 'left', 'bottom'], False
         for fringe in fringes:
-            if fringe in fr_sig: isfringe = True
-        if not isfringe: self.downstream['N'] = fr_sig
+            if fringe in fr_sig:
+                isfringe = True
+        if not isfringe:
+            self.downstream['N'] = fr_sig
 
         lane = self.lane_sets['N-N'][0]
         fr_sig = re.findall('[a-zA-Z]+[0-9]+', lane)[0]
         fringes, isfringe = ['top', 'right', 'left', 'bottom'], False
         for fringe in fringes:
-            if fringe in fr_sig: isfringe = True
-        if not isfringe: self.downstream['S'] = fr_sig
+            if fringe in fr_sig:
+                isfringe = True
+        if not isfringe:
+            self.downstream['S'] = fr_sig
 
         lane = self.lane_sets['W-W'][0]
         fr_sig = re.findall('[a-zA-Z]+[0-9]+', lane)[0]
         fringes, isfringe = ['top', 'right', 'left', 'bottom'], False
         for fringe in fringes:
-            if fringe in fr_sig: isfringe = True
-        if not isfringe: self.downstream['E'] = fr_sig
+            if fringe in fr_sig:
+                isfringe = True
+        if not isfringe:
+            self.downstream['E'] = fr_sig
 
         lane = self.lane_sets['E-E'][0]
         fr_sig = re.findall('[a-zA-Z]+[0-9]+', lane)[0]
         fringes, isfringe = ['top', 'right', 'left', 'bottom'], False
         for fringe in fringes:
-            if fringe in fr_sig: isfringe = True
-        if not isfringe: self.downstream['W'] = fr_sig
+            if fringe in fr_sig:
+                isfringe = True
+        if not isfringe:
+            self.downstream['W'] = fr_sig
         print("'"+self.id+"'"+": {")
         print("'lane_sets':"+str(self.lane_sets)+',')
         print("'downstream':"+str(self.downstream)+'},')

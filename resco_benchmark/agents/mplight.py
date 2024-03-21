@@ -22,10 +22,12 @@ class MPLight(SharedAgent):
             zeros = np.zeros(len(phase_pairs) - 1, dtype=int)
             cnt = 0
             for j in range(len(phase_pairs)):
-                if i == j: continue
+                if i == j:
+                    continue
                 pair_a = phase_pairs[i]
                 pair_b = phase_pairs[j]
-                if len(list(set(pair_a + pair_b))) == 3: zeros[cnt] = 1
+                if len(list(set(pair_a + pair_b))) == 3:
+                    zeros[cnt] = 1
                 cnt += 1
             comp_mask.append(zeros)
         comp_mask = np.asarray(comp_mask)
@@ -108,7 +110,8 @@ class FRAP(nn.Module):
         rotated_phases = []
         for i in range(len(pairs)):
             for j in range(len(pairs)):
-                if i != j: rotated_phases.append(torch.cat((pairs[i], pairs[j]), -1))
+                if i != j:
+                    rotated_phases.append(torch.cat((pairs[i], pairs[j]), -1))
         rotated_phases = torch.stack(rotated_phases, 1)
         rotated_phases = torch.reshape(rotated_phases,
                                        (batch_size, self.oshape, self.oshape - 1, 2 * self.lane_embed_units))
