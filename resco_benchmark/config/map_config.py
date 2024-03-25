@@ -137,9 +137,9 @@ map_configs = {
     },
     'grid3x3_waves': {
         'lights': [],
-        'net': 'environments/grid3x3/9x3_train_waves_3600.sumocfg',
+        'net': 'environments/grid3x3/9x3_1-2-3-1-2-3-1-2-3.sumocfg',
         'route': None,
-        'step_length': 10,
+        'step_length': 3,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
