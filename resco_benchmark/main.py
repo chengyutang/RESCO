@@ -22,7 +22,7 @@ def main():
                     choices=[
                         'grid4x4', 'arterial4x4', 'ingolstadt1', 'ingolstadt7', 'ingolstadt21', 'cologne1', 'cologne3',
                         'cologne8', 'grid3x3', 'grid_5', 'grid_5_normal', 'grid_5_heavy', 'grid_5_waves', 'grid18x3',
-                        'grid3x3_normal', 'grid3x3_waves', 'grid_5_waves_step_3s'
+                        'grid3x3_normal', 'grid3x3_waves', 'grid_5_waves_step_3s', 'grid3x3_waves_step_3s'
                     ])
     ap.add_argument("--pwd", type=str, default=os.path.dirname(__file__))
     ap.add_argument("--log-dir", type=str, default=os.path.join(os.path.dirname(__file__), 'results'))
