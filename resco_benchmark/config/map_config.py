@@ -190,6 +190,17 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
+    'grid_5_waves_step_3s': {
+        'lights': [],
+        'net': 'environments/grid_5/5x3_train_waves_3600.sumocfg',
+        'route': None,
+        'step_length': 3,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
+        'warmup': 0
+    },
     'grid18x3': {
         'lights': [],
         'net': 'environments/grid18x3/grid18x3.sumocfg',
