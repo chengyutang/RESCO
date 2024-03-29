@@ -143,7 +143,8 @@ class MultiSignal(gym.Env):
                           '--no-step-log', 'True',
                           '--no-warnings', 'True']
         if self.log_emissions:
-            self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, f"emission_{self.run}.xml")]
+            self.sumo_cmd += ['--device.emissions.probability', '1.0']
+            # self.sumo_cmd += ['--emission-output', os.path.join(self.log_dir, f"emission_{self.run}.xml")]
         if self.libsumo:
             traci.start(self.sumo_cmd)
             self.sumo = traci
