@@ -170,6 +170,37 @@ mdp_configs = {
                 'J4_mgr': ['J0_mgr'],
             }
         },
+        'grid3x3_lightwaves': {
+            'coef': 0.4,
+            'coop_gamma': 0.9,
+            'clip_wave': 4.0,
+            'clip_wait': 4.0,
+            'norm_wave': 5.0,
+            'norm_wait': 100.0,
+            'alpha': 0.75,
+            'management': {
+                'J11_mgr': ['J11'],
+                'J12_mgr': ['J12'],
+                'J13_mgr': ['J13'],
+                'J21_mgr': ['J21'],
+                'J22_mgr': ['J22'],
+                'J23_mgr': ['J23'],
+                'J31_mgr': ['J31'],
+                'J32_mgr': ['J32'],
+                'J33_mgr': ['J33'],
+            },
+            'management_neighbors': {
+                'J11_mgr': ['J12_mgr', 'J21_mgr'],
+                'J12_mgr': ['J11_mgr', 'J13_mgr', 'J22_mgr'],
+                'J13_mgr': ['J12_mgr', 'J23_mgr'],
+                'J21_mgr': ['J11_mgr', 'J22_mgr', 'J31_mgr'],
+                'J22_mgr': ['J12_mgr', 'J21_mgr', 'J23_mgr', 'J32_mgr'],
+                'J23_mgr': ['J13_mgr', 'J22_mgr', 'J33_mgr'],
+                'J31_mgr': ['J21_mgr', 'J32_mgr'],
+                'J32_mgr': ['J22_mgr', 'J31_mgr', 'J33_mgr'],
+                'J33_mgr': ['J23_mgr', 'J32_mgr'],
+            }
+        },
         'ingolstadt1': {
             'coef': 0.4,
             'coop_gamma': 0.9,

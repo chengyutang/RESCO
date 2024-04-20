@@ -40,7 +40,7 @@ class MPLight(SharedAgent):
         if self.config['load']:
             print('LOADING SAVED MODEL FOR EVALUATION')
             # self.agent.load(os.path.join(self.config['log_dir'], 'agent.pt'))
-            self.agent.load(os.path.join(self.config['load'], 'agent.pt'))
+            self.agent.load(os.path.join(self.config['load'], 'agent_ep100.pt'))
             self.agent.agent.training = False
 
 

@@ -3,21 +3,23 @@ import os
 
 from resco_benchmark.config.signal_config import signal_configs
 from resco_benchmark.agents.agent import Agent
+import tensorflow.compat.v1 as tf
+from resco_benchmark.agents.ma2c import MA2CAgent
 
-try:
-    import tensorflow as tf
-    from resco_benchmark.agents.ma2c import MA2CAgent
-except ImportError:
-    tf = None
-    pass
+# try:
+#     import tensorflow as tf
+#     from resco_benchmark.agents.ma2c import MA2CAgent
+# except ImportError:
+#     tf = None
+#     pass
+#
+# if tf is None:
+#     class FMA2C(Agent):
+#         def __init__(self, config, obs_act, map_name, thread_number):
+#             super().__init__()
+#             raise EnvironmentError("Install optional tensorflow requirement for FMA2C")
 
-if tf is None:
-    class FMA2C(Agent):
-        def __init__(self, config, obs_act, map_name, thread_number):
-            super().__init__()
-            raise EnvironmentError("Install optional tensorflow requirement for FMA2C")
-
-else:
+if True:
 
     class FMA2C(Agent):
         def __init__(self, config, obs_act, map_name, thread_number):

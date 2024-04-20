@@ -2,22 +2,25 @@ import numpy as np
 import os
 from resco_benchmark.agents.agent import Agent, IndependentAgent
 from resco_benchmark.config.signal_config import signal_configs
+import tensorflow.compat.v1 as tf
 
 
-try:
-    import tensorflow as tf
-except ImportError:
-    tf = None
-    pass
+# try:
+#     import tensorflow.compat.v1 as tf
+# except ImportError:
+#     tf = None
+#     pass
 
 
-if tf is None:
-    class MA2C(IndependentAgent):
-        def __init__(self, config, obs_act, map_name, thread_number, sess=None):
-            super().__init__(config, obs_act, map_name, thread_number)
-            raise EnvironmentError("Install optional tensorflow requirement for MA2C")
+# if tf is None:
+#     class MA2C(IndependentAgent):
+#         def __init__(self, config, obs_act, map_name, thread_number, sess=None):
+#             super().__init__(config, obs_act, map_name, thread_number)
+#             raise EnvironmentError("Install optional tensorflow requirement for MA2C")
 
-else:
+if True:
+
+    tf.disable_eager_execution()
 
     class MA2C(IndependentAgent):
         def __init__(self, config, obs_act, map_name, thread_number, sess=None):
@@ -482,7 +485,7 @@ else:
     def fc(x, scope, n_out, act=tf.nn.relu, init_scale=DEFAULT_SCALE,
            init_mode=DEFAULT_MODE, init_method=DEFAULT_METHOD):
         with tf.variable_scope(scope):
-            n_in = x.shape[1].value
+            n_in = x.shape[1]  # .value
             w = tf.get_variable("w", [n_in, n_out],
                                 initializer=init_method(init_scale, init_mode))
             b = tf.get_variable("b", [n_out], initializer=tf.constant_initializer(0.0))
@@ -491,7 +494,7 @@ else:
 
 
     def batch_to_seq(x):
-        n_step = x.shape[0].value
+        n_step = x.shape[0]  # .value
         if len(x.shape) == 1:
             x = tf.expand_dims(x, -1)
         return tf.split(axis=0, num_or_size_splits=n_step, value=x)
@@ -506,7 +509,7 @@ else:
         xs = batch_to_seq(xs)
         # need dones to reset states
         dones = batch_to_seq(dones)
-        n_in = xs[0].shape[1].value
+        n_in = xs[0].shape[1]  # .value
         n_out = s.shape[0] // 2
         with tf.variable_scope(scope):
             wx = tf.get_variable("wx", [n_in, n_out*4],

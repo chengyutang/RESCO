@@ -44,7 +44,7 @@ class IDQN(IndependentAgent):
             if self.config['load']:
                 print('LOADING SAVED MODEL FOR EVALUATION')
                 # self.agents[key].load(os.path.join(self.config['log_dir'], f'agent_{key}.pt'))
-                self.agents[key].load(os.path.join(self.config['load'], f'agent_{key}.pt'))
+                self.agents[key].load(os.path.join(self.config['load'], f'agent_{key}_ep100.pt'))
                 self.agents[key].agent.training = False
 
 
