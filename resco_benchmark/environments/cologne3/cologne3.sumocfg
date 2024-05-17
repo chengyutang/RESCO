@@ -9,6 +9,6 @@
     </time>
     <processing>
         <lateral-resolution value="1" />
-        <waiting-time-memory value="4000" />
+        <waiting-time-memory value="28800" />
     </processing>
 </configuration>
