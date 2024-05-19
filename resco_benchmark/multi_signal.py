@@ -122,7 +122,7 @@ class MultiSignal(gym.Env):
             if not self.libsumo:
                 traci.switch(self.connection_name)
             traci.close()
-            self.save_metrics()
+            # self.save_metrics()
         self.metrics = []
 
         self.run += 1
@@ -256,4 +256,4 @@ class MultiSignal(gym.Env):
         if not self.libsumo:
             traci.switch(self.connection_name)
         traci.close()
-        self.save_metrics()
+        # self.save_metrics()
