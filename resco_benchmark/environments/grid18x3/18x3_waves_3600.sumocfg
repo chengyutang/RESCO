@@ -1,6 +1,6 @@
 <configuration>
     <input>
-        <net-file value="18x3lane.net.xml"/>
+        <net-file value="grid18x3.net.xml"/>
         <route-files value="18x3_waves_3600.rou.xml"/>
     </input>
     <processing>
