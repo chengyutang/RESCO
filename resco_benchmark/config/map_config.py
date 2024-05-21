@@ -245,4 +245,26 @@ map_configs = {
         'end_time': 3999,
         'warmup': 0
     },
+    'grid18x3_waves': {
+        'lights': [],
+        'net': 'environments/grid18x3/18x3_waves_3600.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3999,
+        'warmup': 0
+    },
+    'grid18x3_heavy': {
+        'lights': [],
+        'net': 'environments/grid18x3/18x3_heavy_3600.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3999,
+        'warmup': 0
+    },
 }

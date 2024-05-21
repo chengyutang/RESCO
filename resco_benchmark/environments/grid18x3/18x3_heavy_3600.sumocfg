@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="18x3lane.net.xml"/>
+        <route-files value="18x3_heavy_3600.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="4000" />
+    </processing>
+</configuration>
