@@ -146,11 +146,11 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid3x3_lightwaves_step_3s': {
+    'grid3x3_lightwaves_step_5s': {
         'lights': [],
         'net': 'environments/grid3x3/9x3_05-1-2-05-1-2-05-1-2.sumocfg',
         'route': None,
-        'step_length': 3,
+        'step_length': 5,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
@@ -168,11 +168,11 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid3x3_heavywaves_step_3s': {
+    'grid3x3_heavywaves_step_5s': {
         'lights': [],
         'net': 'environments/grid3x3/9x3_1-2-3-1-2-3-1-2-3.sumocfg',
         'route': None,
-        'step_length': 3,
+        'step_length': 5,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
@@ -223,11 +223,11 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid_5_waves_step_3s': {
+    'grid_5_waves_step_5s': {
         'lights': [],
         'net': 'environments/grid_5/5x3_train_waves_3600.sumocfg',
         'route': None,
-        'step_length': 3,
+        'step_length': 5,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
