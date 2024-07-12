@@ -1807,7 +1807,7 @@ signal_configs = {
 			}
 		},
 	},
-	'grid_5_waves_step_3s': {
+	'grid_5_waves_step_5s': {
 		'phase_pairs': [[1, 7], [2, 8], [1, 2], [7, 8], [4, 10], [5, 11], [10, 11], [4, 5]],
 		'valid_acts': {
 			'J0': {0: 0, 1: 1, 4: 2, 5: 3},
@@ -2563,7 +2563,7 @@ signal_configs = {
 			}
 		},
 	},
-	'grid3x3_lightwaves_step_3s': {
+	'grid3x3_lightwaves_step_5s': {
 		'phase_pairs': [[1, 7], [2, 8], [1, 2], [7, 8], [4, 10], [5, 11], [10, 11], [4, 5]],
 		'valid_acts': {
 			'J11': {0: 0, 1: 1, 4: 2, 5: 3},
@@ -2987,7 +2987,7 @@ signal_configs = {
 			}
 		},
 	},
-	'grid3x3_heavywaves_step_3s': {
+	'grid3x3_heavywaves_step_5s': {
 		'phase_pairs': [[1, 7], [2, 8], [1, 2], [7, 8], [4, 10], [5, 11], [10, 11], [4, 5]],
 		'valid_acts': {
 			'J11': {0: 0, 1: 1, 4: 2, 5: 3},
