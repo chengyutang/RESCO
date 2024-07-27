@@ -24,7 +24,6 @@ for mode in ["train", "test"]:
         else:
             csv_file.write("episode,waiting_time,time_loss\n")
         for fname in filenames:
-            print(fname)
             episode = fname.split(".")[0].split("_")[-1]
             root = ElementTree.parse(fname).getroot()
             total_waiting_time = 0
