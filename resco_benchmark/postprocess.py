@@ -37,7 +37,7 @@ for mode in ["train", "test"]:
                 num_vehicles += 1
                 total_waiting_time += float(vehicle.attrib["waitingTime"])
                 total_time_loss += float(vehicle.attrib["timeLoss"])
-                if mode == "test":
+                if len(vehicle) > 0:
                     total_co2 += float(vehicle[0].attrib["CO2_abs"])
                     total_co += float(vehicle[0].attrib["CO_abs"])
                     total_pmx += float(vehicle[0].attrib["PMx_abs"])
