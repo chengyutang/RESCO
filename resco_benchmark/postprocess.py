@@ -9,7 +9,7 @@ parser.add_argument("--root-dir", type=str)
 args = parser.parse_args()
 root_dir = args.root_dir
 
-for mode in ["train", "test"]:
+for mode in ["train", "test", "test_low", "test_medium", "test_high"]:
     for sub in os.listdir(root_dir):
         if not sub.isdigit():
             continue
@@ -19,7 +19,7 @@ for mode in ["train", "test"]:
                 filenames.append(os.path.join(root_dir, sub, mode, fname))
         filenames.sort(key=lambda x: int(x.split(".")[0].split("_")[-1]))
         csv_file = open(os.path.join(root_dir, sub, mode, "results.csv"), "w")
-        if mode == "test":
+        if "test" in mode:
             csv_file.write("episode,waiting_time,time_loss,CO2,CO,PMx,fuel\n")
         else:
             csv_file.write("episode,waiting_time,time_loss\n")
@@ -42,7 +42,7 @@ for mode in ["train", "test"]:
                     total_co += float(vehicle[0].attrib["CO_abs"])
                     total_pmx += float(vehicle[0].attrib["PMx_abs"])
                     total_fuel += float(vehicle[0].attrib["fuel_abs"])
-            if mode == "test":
+            if "test" in mode:
                 csv_file.write(f"{episode},{total_waiting_time / num_vehicles},{total_time_loss / num_vehicles},{total_co2 / num_vehicles},{total_co / num_vehicles},{total_pmx / num_vehicles},{total_fuel / num_vehicles}\n")
             else:
                 csv_file.write(f"{episode},{total_waiting_time / num_vehicles},{total_time_loss / num_vehicles}\n")
