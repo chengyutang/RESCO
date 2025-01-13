@@ -1,7 +1,7 @@
 <configuration>
     <input>
-        <net-file value="grid3x3.net.xml"/>
-        <route-files value="grid3x3_train.rou.xml"/>
+        <net-file value="3x3.net.xml"/>
+        <route-files value="3x3_train.rou.xml"/>
     </input>
     <processing>
         <lateral-resolution value="1" />
