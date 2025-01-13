@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="3x6_medium.net.xml"/>
+        <route-files value="3x6_medium.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="4000" />
+    </processing>
+</configuration>

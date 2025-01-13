@@ -20,10 +20,12 @@ def main():
     ap.add_argument("--procs", type=int, default=1)
     ap.add_argument("--map", type=str, default='ingolstadt1',
                     choices=[
-                        'grid4x4', 'arterial4x4', 'ingolstadt1', 'ingolstadt7', 'ingolstadt21', 'cologne1', 'cologne3',
-                        'cologne8', 'grid3x3', 'grid_5', 'grid_5_normal', 'grid_5_heavy', 'grid18x3', 'grid3x3_normal',
-                        'grid_5_waves', 'grid_5_waves_step_5s', 'grid3x3_heavywaves', 'grid3x3_heavywaves_step_5s',
-                        'grid3x3_lightwaves', 'grid3x3_lightwaves_step_5s', 'grid18x3_waves', 'grid18x3_heavy',
+                        'grid4x4', 'arterial4x4',
+                        'ingolstadt1', 'ingolstadt7', 'ingolstadt21',
+                        'cologne1', 'cologne3', 'cologne8',
+                        'grid5_train', 'grid5_low', 'grid5_medium', 'grid5_high',
+                        'grid3x3_train', 'grid3x3_low', 'grid3x3_medium', 'grid3x3_high',
+                        'grid3x6_train', 'grid3x6_low', 'grid3x6_medium', 'grid3x6_high',
                     ])
     ap.add_argument("--pwd", type=str, default=os.path.dirname(__file__))
     ap.add_argument("--log-dir", type=str, default=os.path.join(os.path.dirname(__file__), 'results'))

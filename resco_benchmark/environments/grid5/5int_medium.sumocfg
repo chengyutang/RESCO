@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="5int.net.xml"/>
+        <route-files value="5int_medium.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="4000" />
+    </processing>
+</configuration>

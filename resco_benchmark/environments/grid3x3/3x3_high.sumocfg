@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="3x3.net.xml"/>
+        <route-files value="3x3_high.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="4000" />
+    </processing>
+</configuration>

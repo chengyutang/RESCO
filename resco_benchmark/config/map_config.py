@@ -113,31 +113,21 @@ map_configs = {
         'end_time': 69000,
         'warmup': 0
     },
-    'grid3x3': {
+
+    'grid5_train': {
         'lights': [],
-        'net': 'environments/grid3x3/grid3x3.sumocfg',
+        'net': 'environments/grid5/5int_train.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
-        'end_time': 1999,
+        'end_time': 10800,
         'warmup': 0
     },
-    'grid3x3_normal': {
+    'grid5_low': {
         'lights': [],
-        'net': 'environments/grid3x3/grid3x3_normal.sumocfg',
-        'route': None,
-        'step_length': 10,
-        'yellow_length': 3,
-        'step_ratio': 1,
-        'start_time': 0,
-        'end_time': 3600,
-        'warmup': 0
-    },
-    'grid3x3_lightwaves': {
-        'lights': [],
-        'net': 'environments/grid3x3/9x3_05-1-2-05-1-2-05-1-2.sumocfg',
+        'net': 'environments/grid5/5int_low.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
@@ -146,20 +136,9 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid3x3_lightwaves_step_5s': {
+    'grid5_medium': {
         'lights': [],
-        'net': 'environments/grid3x3/9x3_05-1-2-05-1-2-05-1-2.sumocfg',
-        'route': None,
-        'step_length': 5,
-        'yellow_length': 3,
-        'step_ratio': 1,
-        'start_time': 0,
-        'end_time': 3600,
-        'warmup': 0
-    },
-    'grid3x3_heavywaves': {
-        'lights': [],
-        'net': 'environments/grid3x3/9x3_1-2-3-1-2-3-1-2-3.sumocfg',
+        'net': 'environments/grid5/5int_medium.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
@@ -168,31 +147,9 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid3x3_heavywaves_step_5s': {
+    'grid5_high': {
         'lights': [],
-        'net': 'environments/grid3x3/9x3_1-2-3-1-2-3-1-2-3.sumocfg',
-        'route': None,
-        'step_length': 5,
-        'yellow_length': 3,
-        'step_ratio': 1,
-        'start_time': 0,
-        'end_time': 3600,
-        'warmup': 0
-    },
-    'grid_5': {
-        'lights': [],
-        'net': 'environments/grid_5/grid_5.sumocfg',
-        'route': None,
-        'step_length': 10,
-        'yellow_length': 3,
-        'step_ratio': 1,
-        'start_time': 0,
-        'end_time': 1999,
-        'warmup': 0
-    },
-    'grid_5_normal': {
-        'lights': [],
-        'net': 'environments/grid_5/grid_5_normal.sumocfg',
+        'net': 'environments/grid5/5int_high.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
@@ -201,9 +158,21 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid_5_heavy': {
+
+    'grid3x3_train': {
         'lights': [],
-        'net': 'environments/grid_5/grid_5_heavy.sumocfg',
+        'net': 'environments/grid3x3/3x3_train.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 10800,
+        'warmup': 0
+    },
+    'grid3x3_low': {
+        'lights': [],
+        'net': 'environments/grid3x3/3x3_low.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
@@ -212,9 +181,9 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid_5_waves': {
+    'grid3x3_medium': {
         'lights': [],
-        'net': 'environments/grid_5/5x3_train_waves_3600.sumocfg',
+        'net': 'environments/grid3x3/3x3_medium.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
@@ -223,48 +192,60 @@ map_configs = {
         'end_time': 3600,
         'warmup': 0
     },
-    'grid_5_waves_step_5s': {
+    'grid3x3_high': {
         'lights': [],
-        'net': 'environments/grid_5/5x3_train_waves_3600.sumocfg',
+        'net': 'environments/grid3x3/3x3_high.sumocfg',
         'route': None,
-        'step_length': 5,
+        'step_length': 10,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
         'end_time': 3600,
         'warmup': 0
     },
-    'grid18x3': {
+
+    'grid3x6_train': {
         'lights': [],
-        'net': 'environments/grid18x3/grid18x3.sumocfg',
+        'net': 'environments/grid3x6/3x6_train.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
-        'end_time': 3999,
+        'end_time': 10800,
         'warmup': 0
     },
-    'grid18x3_waves': {
+    'grid3x6_low': {
         'lights': [],
-        'net': 'environments/grid18x3/18x3_waves_3600.sumocfg',
+        'net': 'environments/grid3x6/3x6_low.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
-        'end_time': 3999,
+        'end_time': 3600,
         'warmup': 0
     },
-    'grid18x3_heavy': {
+    'grid3x6_medium': {
         'lights': [],
-        'net': 'environments/grid18x3/18x3_heavy_3600.sumocfg',
+        'net': 'environments/grid3x6/3x6_medium.sumocfg',
         'route': None,
         'step_length': 10,
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
-        'end_time': 3999,
+        'end_time': 3600,
+        'warmup': 0
+    },
+    'grid3x6_high': {
+        'lights': [],
+        'net': 'environments/grid3x6/3x6_high.sumocfg',
+        'route': None,
+        'step_length': 10,
+        'yellow_length': 3,
+        'step_ratio': 1,
+        'start_time': 0,
+        'end_time': 3600,
         'warmup': 0
     },
 }
