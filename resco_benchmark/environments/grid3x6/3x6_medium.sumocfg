@@ -1,6 +1,6 @@
 <configuration>
     <input>
-        <net-file value="3x6_medium.net.xml"/>
+        <net-file value="3x6.net.xml"/>
         <route-files value="3x6_medium.rou.xml"/>
     </input>
     <processing>
