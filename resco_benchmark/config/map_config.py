@@ -137,6 +137,51 @@ map_configs = {
             'warmup': 0
         },
 
+    'cologne3_v2_train': {
+            'lights': [],
+            'net': 'environments/cologne3_v2/cologne3_v2_train.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 10800,
+            'warmup': 0
+        },
+    'cologne3_v2_low': {
+            'lights': [],
+            'net': 'environments/cologne3_v2/cologne3_v2_low.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 3600,
+            'warmup': 0
+        },
+    'cologne3_v2_medium': {
+            'lights': [],
+            'net': 'environments/cologne3_v2/cologne3_v2_medium.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 3600,
+            'warmup': 0
+        },
+    'cologne3_v2_high': {
+            'lights': [],
+            'net': 'environments/cologne3_v2/cologne3_v2_high.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 3600,
+            'warmup': 0
+        },
+
     'cologne8': {
         'lights': [],
         'net': 'environments/cologne8/cologne8.sumocfg',
@@ -184,6 +229,51 @@ map_configs = {
     'cologne8_high': {
             'lights': [],
             'net': 'environments/cologne8/cologne8_high.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 3600,
+            'warmup': 0
+        },
+
+    'cologne8_v2_train': {
+            'lights': [],
+            'net': 'environments/cologne8_v2/cologne8_v2_train.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 10800,
+            'warmup': 0
+        },
+    'cologne8_v2_low': {
+            'lights': [],
+            'net': 'environments/cologne8_v2/cologne8_v2_low.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 3600,
+            'warmup': 0
+        },
+    'cologne8_v2_medium': {
+            'lights': [],
+            'net': 'environments/cologne8_v2/cologne8_v2_medium.sumocfg',
+            'route': None,
+            'step_length': 10,
+            'yellow_length': 3,
+            'step_ratio': 1,
+            'start_time': 0,
+            'end_time': 3600,
+            'warmup': 0
+        },
+    'cologne8_v2_high': {
+            'lights': [],
+            'net': 'environments/cologne8_v2/cologne8_v2_high.sumocfg',
             'route': None,
             'step_length': 10,
             'yellow_length': 3,

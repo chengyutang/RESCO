@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="cologne8.net.xml"/>
+        <route-files value="cologne8_v2_train.rou.xml"/>
+    </input>
+    <processing>
+        <lateral-resolution value="1" />
+        <waiting-time-memory value="10800" />
+    </processing>
+</configuration>
