@@ -27,7 +27,9 @@ log_dir = os.getcwd()
 maps = [
     'grid4x4', 'arterial4x4',
     'ingolstadt1', 'ingolstadt7', 'ingolstadt21',
-    'cologne1', 'cologne3', 'cologne8',
+    'cologne1',
+    'cologne3', 'cologne3_train', 'cologne3_low', 'cologne3_medium', 'cologne3_high',
+    'cologne8', 'cologne8_train', 'cologne8_low', 'cologne8_medium', 'cologne8_high',
     'grid5_train', 'grid5_low', 'grid5_medium', 'grid5_high',
     'grid3x3_train', 'grid3x3_low', 'grid3x3_medium', 'grid3x3_high',
     'grid3x6_train', 'grid3x6_low', 'grid3x6_medium', 'grid3x6_high',
