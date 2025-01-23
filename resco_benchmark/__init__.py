@@ -34,6 +34,7 @@ maps = [
     'cologne8_v2_train', 'cologne8_v2_low', 'cologne8_v2_medium', 'cologne8_v2_high',
     'grid5_train', 'grid5_low', 'grid5_medium', 'grid5_high',
     'grid3x3_train', 'grid3x3_low', 'grid3x3_medium', 'grid3x3_high',
+    'grid3x3_v2_train', 'grid3x3_v2_low', 'grid3x3_v2_medium', 'grid3x3_v2_high',
     'grid3x6_train', 'grid3x6_low', 'grid3x6_medium', 'grid3x6_high',
 ]
 algs = ['ia2c', 'ippo', 'maa2c', 'mappo', 'coma', 'iql', 'maddpg', 'qmix', 'vdn', 'ia2c_ns', 'ippo_ns', 'maa2c_ns', 'mappo_ns', 'coma_ns', 'iql_ns', 'maddpg_ns', 'qmix_ns', 'vdn_ns']

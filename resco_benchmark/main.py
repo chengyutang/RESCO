@@ -29,6 +29,7 @@ def main():
                         'cologne8_v2_train', 'cologne8_v2_low', 'cologne8_v2_medium', 'cologne8_v2_high',
                         'grid5_train', 'grid5_low', 'grid5_medium', 'grid5_high',
                         'grid3x3_train', 'grid3x3_low', 'grid3x3_medium', 'grid3x3_high',
+                        'grid3x3_v2_train', 'grid3x3_v2_low', 'grid3x3_v2_medium', 'grid3x3_v2_high',
                         'grid3x6_train', 'grid3x6_low', 'grid3x6_medium', 'grid3x6_high',
                     ])
     ap.add_argument("--pwd", type=str, default=os.path.dirname(__file__))
