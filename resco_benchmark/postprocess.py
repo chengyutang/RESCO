@@ -6,10 +6,9 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--root-dir", type=str)
 
-args = parser.parse_args()
-root_dir = args.root_dir
+root_dir = parser.parse_args().root_dir
 
-for mode in ["train", "test", "test_low", "test_medium", "test_high"]:
+for mode in ["train", "test_train", "test_low", "test_medium", "test_high"]:
     for sub in os.listdir(root_dir):
         if not sub.isdigit():
             continue
