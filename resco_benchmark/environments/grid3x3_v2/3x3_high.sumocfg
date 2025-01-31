@@ -5,6 +5,6 @@
     </input>
     <processing>
         <lateral-resolution value="1" />
-        <waiting-time-memory value="4000" />
+        <waiting-time-memory value="3600" />
     </processing>
 </configuration>

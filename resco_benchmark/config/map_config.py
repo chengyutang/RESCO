@@ -393,7 +393,7 @@ map_configs = {
         'yellow_length': 3,
         'step_ratio': 1,
         'start_time': 0,
-        'end_time': 10800,
+        'end_time': 5400,
         'warmup': 0
     },
     'grid3x3_v2_low': {
